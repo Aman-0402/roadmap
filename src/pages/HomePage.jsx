@@ -36,7 +36,7 @@ export default function HomePage() {
       </div>
 
       {/* Cards */}
-      <div className="relative z-10 flex gap-4 sm:gap-6 px-4 sm:px-8 flex-wrap justify-center w-full max-w-4xl">
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 px-4 sm:px-8 w-full max-w-6xl">
         {roadmapsList.map((id, index) => {
           const roadmap = roadmapsRegistry[id]
           const bubbleCount = roadmap.nodes.filter(n => n.type === 'bubbleNode').length
@@ -66,7 +66,7 @@ function RoadmapCard({ roadmap, bubbleCount, index, onClick }) {
         boxShadow: `0 0 50px ${roadmap.color}25, 0 20px 40px rgba(0,0,0,0.4)`,
       }}
       onClick={onClick}
-      className="flex flex-col items-center gap-5 p-6 sm:p-8 rounded-2xl cursor-pointer w-full sm:w-64"
+      className="flex flex-col items-center gap-5 p-6 sm:p-8 rounded-2xl cursor-pointer w-full"
       style={{
         background: 'rgba(255,255,255,0.04)',
         border: '1px solid rgba(255,255,255,0.08)',
