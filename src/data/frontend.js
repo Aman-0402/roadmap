@@ -5,7 +5,7 @@ export const nodes = [
     position: { x: 300, y: 80 },
     data: {
       label: 'HTML',
-      icon: '🌐',
+      icon: 'https://techicons.dev/icons/html5.svg',
       step: 1,
       difficulty: 'Beginner',
       resources: [
@@ -49,7 +49,7 @@ Key concepts:
     position: { x: 650, y: 280 },
     data: {
       label: 'CSS',
-      icon: '🎨',
+      icon: 'https://techicons.dev/icons/css3.svg',
       step: 2,
       difficulty: 'Beginner',
       resources: [
@@ -95,7 +95,7 @@ Key concepts:
     position: { x: 180, y: 500 },
     data: {
       label: 'JavaScript',
-      icon: '⚡',
+      icon: 'https://techicons.dev/icons/javascript.svg',
       step: 3,
       difficulty: 'Intermediate',
       resources: [
@@ -141,7 +141,7 @@ Key concepts:
     position: { x: 580, y: 650 },
     data: {
       label: 'React',
-      icon: '⚛️',
+      icon: 'https://techicons.dev/icons/react.svg',
       step: 4,
       difficulty: 'Intermediate',
       resources: [

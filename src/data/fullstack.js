@@ -20,7 +20,7 @@ export const nodes = [
     position: { x: 80, y: 80 },
     data: {
       label: 'HTML',
-      icon: '🌐',
+      icon: 'https://techicons.dev/icons/html5.svg',
       step: 1,
       difficulty: 'Beginner',
       resources: [
@@ -50,7 +50,7 @@ export const nodes = [
     position: { x: 80, y: 320 },
     data: {
       label: 'CSS',
-      icon: '🎨',
+      icon: 'https://techicons.dev/icons/css3.svg',
       step: 2,
       difficulty: 'Beginner',
       resources: [
@@ -80,7 +80,7 @@ export const nodes = [
     position: { x: 80, y: 560 },
     data: {
       label: 'JavaScript',
-      icon: '⚡',
+      icon: 'https://techicons.dev/icons/javascript.svg',
       step: 3,
       difficulty: 'Intermediate',
       resources: [
@@ -110,7 +110,7 @@ export const nodes = [
     position: { x: 80, y: 800 },
     data: {
       label: 'React',
-      icon: '⚛️',
+      icon: 'https://techicons.dev/icons/react.svg',
       step: 4,
       difficulty: 'Intermediate',
       resources: [
@@ -142,7 +142,7 @@ export const nodes = [
     position: { x: 400, y: 80 },
     data: {
       label: 'Node.js',
-      icon: '🟢',
+      icon: 'https://techicons.dev/icons/nodejs.svg',
       step: 1,
       difficulty: 'Beginner',
       resources: [
@@ -171,7 +171,7 @@ export const nodes = [
     position: { x: 400, y: 320 },
     data: {
       label: 'Express',
-      icon: '🚂',
+      icon: 'https://techicons.dev/icons/express.svg',
       step: 2,
       difficulty: 'Intermediate',
       resources: [
@@ -200,7 +200,7 @@ export const nodes = [
     position: { x: 400, y: 560 },
     data: {
       label: 'MongoDB',
-      icon: '🍃',
+      icon: 'https://techicons.dev/icons/mongodb.svg',
       step: 3,
       difficulty: 'Intermediate',
       resources: [
