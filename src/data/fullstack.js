@@ -3,21 +3,21 @@ export const nodes = [
   {
     id: 'label-fs-frontend',
     type: 'trackLabel',
-    position: { x: 150, y: -60 },
+    position: { x: 80, y: -60 },
     data: { label: 'Frontend Path' },
   },
   {
     id: 'label-fs-backend',
     type: 'trackLabel',
-    position: { x: 520, y: -60 },
+    position: { x: 400, y: -60 },
     data: { label: 'Backend Path' },
   },
 
-  // Frontend track (x ≈ 150) — fs- prefix to avoid id collision
+  // Frontend track — fs- prefix to avoid id collision
   {
     id: 'fs-html',
     type: 'bubbleNode',
-    position: { x: 150, y: 100 },
+    position: { x: 80, y: 80 },
     data: {
       label: 'HTML',
       icon: '🌐',
@@ -47,7 +47,7 @@ export const nodes = [
   {
     id: 'fs-css',
     type: 'bubbleNode',
-    position: { x: 150, y: 300 },
+    position: { x: 80, y: 320 },
     data: {
       label: 'CSS',
       icon: '🎨',
@@ -77,7 +77,7 @@ export const nodes = [
   {
     id: 'fs-js',
     type: 'bubbleNode',
-    position: { x: 150, y: 500 },
+    position: { x: 80, y: 560 },
     data: {
       label: 'JavaScript',
       icon: '⚡',
@@ -107,7 +107,7 @@ export const nodes = [
   {
     id: 'fs-react',
     type: 'bubbleNode',
-    position: { x: 150, y: 700 },
+    position: { x: 80, y: 800 },
     data: {
       label: 'React',
       icon: '⚛️',
@@ -135,11 +135,11 @@ export const nodes = [
     },
   },
 
-  // Backend track (x ≈ 520) — fs- prefix to avoid id collision
+  // Backend track — fs- prefix to avoid id collision
   {
     id: 'fs-nodejs',
     type: 'bubbleNode',
-    position: { x: 520, y: 100 },
+    position: { x: 400, y: 80 },
     data: {
       label: 'Node.js',
       icon: '🟢',
@@ -168,7 +168,7 @@ export const nodes = [
   {
     id: 'fs-express',
     type: 'bubbleNode',
-    position: { x: 520, y: 300 },
+    position: { x: 400, y: 320 },
     data: {
       label: 'Express',
       icon: '🚂',
@@ -197,7 +197,7 @@ export const nodes = [
   {
     id: 'fs-mongodb',
     type: 'bubbleNode',
-    position: { x: 520, y: 500 },
+    position: { x: 400, y: 560 },
     data: {
       label: 'MongoDB',
       icon: '🍃',
@@ -227,7 +227,7 @@ export const nodes = [
   {
     id: 'fs-deploy',
     type: 'bubbleNode',
-    position: { x: 520, y: 700 },
+    position: { x: 400, y: 800 },
     data: {
       label: 'Deployment',
       icon: '🚀',
