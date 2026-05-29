@@ -32,7 +32,7 @@ function BubbleNode({ id, data }) {
       <motion.div
         animate={
           completing
-            ? { scale: [1, 1.4, 1], transition: { duration: 0.6, times: [0, 0.4, 1] } }
+            ? { scale: [1, 1.55, 0.88, 1.05, 1], transition: { duration: 0.75, times: [0, 0.25, 0.55, 0.8, 1], ease: 'easeInOut' } }
             : !isLocked
             ? floatAnimation(id)
             : undefined
@@ -154,16 +154,62 @@ function BubbleNode({ id, data }) {
           />
         )}
 
-        {/* Completing flash ring */}
+        {/* Burst: shockwave rings */}
         {completing && (
-          <motion.div
-            className="absolute inset-0 rounded-full"
-            style={{ border: '3px solid #22c55e' }}
-            initial={{ scale: 1, opacity: 1 }}
-            animate={{ scale: 1.5, opacity: 0 }}
-            transition={{ duration: 0.8 }}
-          />
+          <>
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{ border: '3px solid #22c55e', pointerEvents: 'none' }}
+              initial={{ scale: 1, opacity: 1 }}
+              animate={{ scale: 2.8, opacity: 0 }}
+              transition={{ duration: 0.55, ease: 'easeOut' }}
+            />
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{ border: '2px solid #4ade80', pointerEvents: 'none' }}
+              initial={{ scale: 1, opacity: 0.9 }}
+              animate={{ scale: 2.2, opacity: 0 }}
+              transition={{ duration: 0.45, ease: 'easeOut', delay: 0.08 }}
+            />
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{ border: '2px solid #86efac', pointerEvents: 'none' }}
+              initial={{ scale: 1.1, opacity: 0.7 }}
+              animate={{ scale: 3.4, opacity: 0 }}
+              transition={{ duration: 0.65, ease: 'easeOut', delay: 0.04 }}
+            />
+          </>
         )}
+
+        {/* Burst: star particles */}
+        {completing && Array.from({ length: 8 }).map((_, i) => {
+          const angle = (i * 45 * Math.PI) / 180
+          const dist = 95
+          return (
+            <motion.div
+              key={i}
+              className="absolute rounded-full"
+              style={{
+                width: i % 2 === 0 ? '8px' : '5px',
+                height: i % 2 === 0 ? '8px' : '5px',
+                background: i % 3 === 0 ? '#22c55e' : i % 3 === 1 ? '#4ade80' : '#86efac',
+                top: '50%', left: '50%',
+                marginTop: i % 2 === 0 ? '-4px' : '-2.5px',
+                marginLeft: i % 2 === 0 ? '-4px' : '-2.5px',
+                pointerEvents: 'none',
+                zIndex: 20,
+              }}
+              initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+              animate={{
+                x: Math.cos(angle) * dist,
+                y: Math.sin(angle) * dist,
+                scale: 0,
+                opacity: 0,
+              }}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.05 + i * 0.015 }}
+            />
+          )
+        })}
 
         {/* Hover tooltip */}
         <AnimatePresence>
