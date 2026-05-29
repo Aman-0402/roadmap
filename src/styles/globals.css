@@ -38,3 +38,4 @@
 /* Override React Flow defaults */
 .react-flow__renderer { background: transparent !important; }
 .react-flow__background { opacity: 0.3; }
+.react-flow__node:hover { z-index: 1000 !important; }

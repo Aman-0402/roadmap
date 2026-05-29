@@ -52,12 +52,11 @@ function RoadmapCanvas({ roadmap }) {
           data: {
             ...node.data,
             status: getStatus(node.id, node.data.prerequisite),
-            onClick: handleNodeClick,
             completing: completingNodeId === node.id,
           },
         }
       }),
-    [roadmap.nodes, getStatus, handleNodeClick, completingNodeId]
+    [roadmap.nodes, getStatus, completingNodeId]
   )
 
   const edges = useMemo(
@@ -139,6 +138,7 @@ function RoadmapCanvas({ roadmap }) {
           edgeTypes={EDGE_TYPES}
           fitView
           fitViewOptions={{ padding: 0.3 }}
+          onNodeClick={(_, node) => handleNodeClick(node.id)}
           nodesDraggable={false}
           nodesConnectable={false}
           elementsSelectable={false}

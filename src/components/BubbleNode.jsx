@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import { Handle, Position } from '@xyflow/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Lock, CheckCircle } from 'lucide-react'
@@ -17,10 +17,11 @@ const floatAnimation = (id) => {
 }
 
 function BubbleNode({ id, data }) {
-  const { label, icon, step, status, onClick, completing } = data
+  const { label, icon, step, status, onClick, completing, topic, difficulty } = data
   const isLocked = status === 'locked'
   const isCompleted = status === 'completed'
   const isActive = status === 'active'
+  const [isHovered, setIsHovered] = useState(false)
 
   const stepLabel = step ? String(step).padStart(2, '0') : null
 
@@ -38,7 +39,9 @@ function BubbleNode({ id, data }) {
         }
         whileHover={!isLocked ? { scale: 1.05 } : undefined}
         whileTap={!isLocked ? { scale: 0.95 } : undefined}
-        onClick={!isLocked ? () => onClick(id) : undefined}
+        onClick={!isLocked && onClick ? () => onClick(id) : undefined}
+        onMouseEnter={() => !isLocked && setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         className="relative w-40 h-40 rounded-full flex flex-col items-center justify-center select-none"
         style={{
           cursor: isLocked ? 'not-allowed' : 'pointer',
@@ -121,7 +124,7 @@ function BubbleNode({ id, data }) {
         {isActive && (
           <motion.div
             className="absolute inset-0 rounded-full"
-            style={{ border: '2px solid #06b6d4' }}
+            style={{ border: '2px solid #06b6d4', pointerEvents: 'none' }}
             animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0, 0.6] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
           />
@@ -135,6 +138,7 @@ function BubbleNode({ id, data }) {
               inset: '-10px',
               border: '2px dashed #06b6d480',
               borderRadius: '50%',
+              pointerEvents: 'none',
             }}
             animate={{ rotate: 360 }}
             transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
@@ -151,6 +155,68 @@ function BubbleNode({ id, data }) {
             transition={{ duration: 0.8 }}
           />
         )}
+
+        {/* Hover tooltip */}
+        <AnimatePresence>
+          {isHovered && topic && (
+            <motion.div
+              className="absolute pointer-events-none"
+              style={{
+                bottom: 'calc(100% + 14px)',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '230px',
+                zIndex: 100,
+              }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.15 }}
+            >
+              <div
+                className="rounded-xl p-3.5"
+                style={{
+                  background: 'rgba(6, 14, 28, 0.96)',
+                  border: `1px solid ${isCompleted ? 'rgba(34,197,94,0.4)' : 'rgba(6,182,212,0.35)'}`,
+                  backdropFilter: 'blur(16px)',
+                  boxShadow: '0 12px 40px rgba(0,0,0,0.6)',
+                }}
+              >
+                {difficulty && (
+                  <span
+                    className="inline-block text-xs font-semibold px-1.5 py-0.5 rounded-full mb-2"
+                    style={{
+                      background: isCompleted ? 'rgba(34,197,94,0.15)' : 'rgba(6,182,212,0.12)',
+                      color: isCompleted ? '#4ade80' : '#22d3ee',
+                      border: isCompleted ? '1px solid rgba(34,197,94,0.3)' : '1px solid rgba(6,182,212,0.25)',
+                    }}
+                  >
+                    {difficulty}
+                  </span>
+                )}
+                <p className="text-xs text-slate-300 leading-relaxed">{topic.description}</p>
+                <p
+                  className="text-xs font-semibold mt-2"
+                  style={{ color: isCompleted ? '#4ade80' : '#06b6d4' }}
+                >
+                  {isCompleted ? '✓ Completed — click to review' : 'Click to explore →'}
+                </p>
+              </div>
+              {/* Arrow pointing down */}
+              <div
+                className="absolute left-1/2 -bottom-1.5"
+                style={{
+                  transform: 'translateX(-50%)',
+                  width: 0,
+                  height: 0,
+                  borderLeft: '6px solid transparent',
+                  borderRight: '6px solid transparent',
+                  borderTop: `6px solid ${isCompleted ? 'rgba(34,197,94,0.4)' : 'rgba(6,182,212,0.35)'}`,
+                }}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       <Handle type="source" position={Position.Bottom} style={{ opacity: 0, pointerEvents: 'none' }} />
