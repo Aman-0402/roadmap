@@ -37,7 +37,11 @@ export default function RightPanel({ nodeData, nodeId, status, totalCount, onClo
         style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
       >
         <div className="flex items-center gap-3">
-          <span className="text-4xl">{icon}</span>
+          {icon && icon.startsWith('http') ? (
+            <img src={icon} alt={label} className="w-10 h-10 object-contain flex-shrink-0" />
+          ) : (
+            <span className="text-4xl">{icon}</span>
+          )}
           <div>
             {step && totalCount && (
               <p className="text-xs text-slate-500 mb-0.5">Step {step} of {totalCount}</p>

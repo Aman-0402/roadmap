@@ -104,7 +104,16 @@ function BubbleNode({ id, data }) {
         </AnimatePresence>
 
         {/* Icon */}
-        <span className="text-4xl mb-1.5 relative z-10">{icon}</span>
+        {icon && icon.startsWith('http') ? (
+          <img
+            src={icon}
+            alt={label}
+            className="relative z-10 mb-1.5"
+            style={{ width: '40px', height: '40px', objectFit: 'contain' }}
+          />
+        ) : (
+          <span className="text-4xl mb-1.5 relative z-10">{icon}</span>
+        )}
 
         {/* Label */}
         <span
