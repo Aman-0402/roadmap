@@ -28,6 +28,10 @@
   50%       { box-shadow: 0 0 35px #22c55e70, 0 0 70px #22c55e40; }
 }
 
+@keyframes march {
+  to { stroke-dashoffset: -40; }
+}
+
 .bubble-active  { animation: glow-pulse 3s ease-in-out infinite; }
 .bubble-done    { animation: glow-pulse-green 2.5s ease-in-out infinite; }
 
