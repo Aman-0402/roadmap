@@ -21,6 +21,8 @@ export const nodes = [
     data: {
       label: 'Node.js',
       icon: '🟢',
+      step: 1,
+      difficulty: 'Beginner',
       prerequisite: null,
       topic: {
         description: 'Node.js is a JavaScript runtime built on Chrome\'s V8 engine, allowing you to run JavaScript on the server side.',
@@ -54,6 +56,8 @@ export const nodes = [
     data: {
       label: 'Express',
       icon: '🚂',
+      step: 2,
+      difficulty: 'Intermediate',
       prerequisite: 'nodejs',
       topic: {
         description: 'Express is a minimal and flexible Node.js web application framework providing a robust set of features for web and mobile applications.',
@@ -87,6 +91,8 @@ export const nodes = [
     data: {
       label: 'MongoDB',
       icon: '🍃',
+      step: 3,
+      difficulty: 'Intermediate',
       prerequisite: 'express',
       topic: {
         description: 'MongoDB is a document-oriented NoSQL database. Data is stored as flexible JSON-like documents — perfect for JavaScript applications.',
@@ -121,6 +127,8 @@ export const nodes = [
     data: {
       label: 'REST API',
       icon: '🔌',
+      step: 4,
+      difficulty: 'Advanced',
       prerequisite: 'mongodb',
       topic: {
         description: 'REST APIs are the standard for web services. Learn to design, secure, document, and deploy production-ready APIs.',
@@ -157,6 +165,8 @@ export const nodes = [
     data: {
       label: 'Python',
       icon: '🐍',
+      step: 1,
+      difficulty: 'Beginner',
       prerequisite: null,
       topic: {
         description: 'Python is a versatile, beginner-friendly language known for clean syntax. Widely used in web development, data science, and automation.',
@@ -191,6 +201,8 @@ export const nodes = [
     data: {
       label: 'Django',
       icon: '🎸',
+      step: 2,
+      difficulty: 'Intermediate',
       prerequisite: 'python',
       topic: {
         description: 'Django is a high-level Python web framework for rapid development of secure and maintainable websites. "Batteries included."',
@@ -225,6 +237,8 @@ export const nodes = [
     data: {
       label: 'PostgreSQL',
       icon: '🐘',
+      step: 3,
+      difficulty: 'Intermediate',
       prerequisite: 'django',
       topic: {
         description: 'PostgreSQL is a powerful open-source relational database with a strong reputation for reliability, data integrity, and correctness.',
@@ -260,6 +274,8 @@ export const nodes = [
     data: {
       label: 'REST APIs',
       icon: '🔗',
+      step: 4,
+      difficulty: 'Advanced',
       prerequisite: 'postgresql',
       topic: {
         description: 'Build production-ready REST APIs using Django REST Framework — the most powerful toolkit for building Web APIs in Python.',

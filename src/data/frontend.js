@@ -6,6 +6,8 @@ export const nodes = [
     data: {
       label: 'HTML',
       icon: '🌐',
+      step: 1,
+      difficulty: 'Beginner',
       prerequisite: null,
       topic: {
         description: 'The backbone of every webpage. HTML defines the structure and content of web pages using a system of elements and tags.',
@@ -43,6 +45,8 @@ Key concepts:
     data: {
       label: 'CSS',
       icon: '🎨',
+      step: 2,
+      difficulty: 'Beginner',
       prerequisite: 'html',
       topic: {
         description: 'CSS brings HTML to life. Style, layout, animations — CSS controls how your web pages look and feel across all devices.',
@@ -81,6 +85,8 @@ Key concepts:
     data: {
       label: 'JavaScript',
       icon: '⚡',
+      step: 3,
+      difficulty: 'Intermediate',
       prerequisite: 'css',
       topic: {
         description: 'JavaScript makes web pages interactive and dynamic. The programming language of the web — runs in every browser, and on servers with Node.js.',
@@ -120,6 +126,8 @@ Key concepts:
     data: {
       label: 'React',
       icon: '⚛️',
+      step: 4,
+      difficulty: 'Intermediate',
       prerequisite: 'javascript',
       topic: {
         description: 'React is a JavaScript library for building user interfaces from reusable components. The industry standard for modern web apps.',

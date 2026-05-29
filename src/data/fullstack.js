@@ -21,6 +21,8 @@ export const nodes = [
     data: {
       label: 'HTML',
       icon: '🌐',
+      step: 1,
+      difficulty: 'Beginner',
       prerequisite: null,
       topic: {
         description: 'The backbone of every webpage. HTML defines structure and content using elements and tags.',
@@ -45,6 +47,8 @@ export const nodes = [
     data: {
       label: 'CSS',
       icon: '🎨',
+      step: 2,
+      difficulty: 'Beginner',
       prerequisite: 'fs-html',
       topic: {
         description: 'CSS styles and layouts your HTML. Controls colors, spacing, typography, and responsiveness.',
@@ -68,6 +72,8 @@ export const nodes = [
     data: {
       label: 'JavaScript',
       icon: '⚡',
+      step: 3,
+      difficulty: 'Intermediate',
       prerequisite: 'fs-css',
       topic: {
         description: 'JavaScript makes pages interactive. Arrays, objects, DOM, events, async/await, and the Fetch API.',
@@ -92,6 +98,8 @@ export const nodes = [
     data: {
       label: 'React',
       icon: '⚛️',
+      step: 4,
+      difficulty: 'Intermediate',
       prerequisite: 'fs-js',
       topic: {
         description: 'React builds UIs from reusable components. useState, useEffect, custom hooks, and React Router.',
@@ -118,6 +126,8 @@ export const nodes = [
     data: {
       label: 'Node.js',
       icon: '🟢',
+      step: 1,
+      difficulty: 'Beginner',
       prerequisite: null,
       topic: {
         description: 'Node.js runs JavaScript on the server. Event loop, npm, file system, and HTTP module.',
@@ -141,6 +151,8 @@ export const nodes = [
     data: {
       label: 'Express',
       icon: '🚂',
+      step: 2,
+      difficulty: 'Intermediate',
       prerequisite: 'fs-nodejs',
       topic: {
         description: 'Express is the minimal Node.js web framework. Routes, middleware, request/response handling.',
@@ -164,6 +176,8 @@ export const nodes = [
     data: {
       label: 'MongoDB',
       icon: '🍃',
+      step: 3,
+      difficulty: 'Intermediate',
       prerequisite: 'fs-express',
       topic: {
         description: 'MongoDB stores data as flexible JSON documents. Connect your Express API to a real database with Mongoose.',
@@ -188,6 +202,8 @@ export const nodes = [
     data: {
       label: 'Deployment',
       icon: '🚀',
+      step: 4,
+      difficulty: 'Advanced',
       prerequisite: 'fs-mongodb',
       topic: {
         description: 'Deploy your full stack app to the cloud. Host frontend on Vercel, backend on Railway or Render, database on MongoDB Atlas.',
