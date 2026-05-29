@@ -1,0 +1,13 @@
+
+> test-vite@0.0.0 test
+> vitest run
+
+
+ RUN  v4.1.7 D:/code/GITHUB/roadmap
+
+
+ Test Files  8 passed (8)
+      Tests  57 passed (57)
+   Start at  07:42:03
+   Duration  6.82s (transform 549ms, setup 2.82s, import 3.37s, tests 1.12s, environment 25.12s)
+

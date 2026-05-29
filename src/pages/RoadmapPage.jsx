@@ -1,19 +1,31 @@
 import { useState, useMemo, useCallback } from 'react'
+import { useParams, useNavigate, Navigate } from 'react-router-dom'
 import { ReactFlow, Background } from '@xyflow/react'
 import { AnimatePresence } from 'framer-motion'
 import '@xyflow/react/dist/style.css'
 
-import { roadmapNodes, roadmapEdges } from '../data/roadmapData'
+import { roadmapsRegistry } from '../data/roadmapsRegistry'
 import { useRoadmapStore } from '../hooks/useRoadmapStore'
 import BubbleNode from '../components/BubbleNode'
 import RoadmapEdge from '../components/RoadmapEdge'
+import TrackLabelNode from '../components/TrackLabelNode'
 import TopicModal from '../components/TopicModal'
 import ParticleBackground from '../components/ParticleBackground'
 
-const NODE_TYPES = { bubbleNode: BubbleNode }
+const NODE_TYPES = { bubbleNode: BubbleNode, trackLabel: TrackLabelNode }
 const EDGE_TYPES = { roadmapEdge: RoadmapEdge }
 
+// Shell component: guards unknown IDs before any hooks are called
 export default function RoadmapPage() {
+  const { id } = useParams()
+  const roadmap = roadmapsRegistry[id]
+  if (!roadmap) return <Navigate to="/" replace />
+  return <RoadmapCanvas roadmap={roadmap} />
+}
+
+// Inner component: all hooks live here, roadmap is always defined
+function RoadmapCanvas({ roadmap }) {
+  const navigate = useNavigate()
   const { completed, getStatus, markComplete } = useRoadmapStore()
   const [selectedNodeId, setSelectedNodeId] = useState(null)
   const [completingNodeId, setCompletingNodeId] = useState(null)
@@ -32,34 +44,37 @@ export default function RoadmapPage() {
 
   const nodes = useMemo(
     () =>
-      roadmapNodes.map((node) => ({
-        ...node,
-        data: {
-          ...node.data,
-          status: getStatus(node.id, node.data.prerequisite),
-          onClick: handleNodeClick,
-          completing: completingNodeId === node.id,
-        },
-      })),
-    [getStatus, handleNodeClick, completingNodeId]
+      roadmap.nodes.map((node) => {
+        if (node.type === 'trackLabel') return node
+        return {
+          ...node,
+          data: {
+            ...node.data,
+            status: getStatus(node.id, node.data.prerequisite),
+            onClick: handleNodeClick,
+            completing: completingNodeId === node.id,
+          },
+        }
+      }),
+    [roadmap.nodes, getStatus, handleNodeClick, completingNodeId]
   )
 
   const edges = useMemo(
     () =>
-      roadmapEdges.map((edge) => ({
+      roadmap.edges.map((edge) => ({
         ...edge,
         data: { active: completed.has(edge.source) },
         animated: false,
       })),
-    [completed]
+    [roadmap.edges, completed]
   )
 
   const selectedNode = selectedNodeId
-    ? roadmapNodes.find((n) => n.id === selectedNodeId)
+    ? roadmap.nodes.find((n) => n.id === selectedNodeId)
     : null
 
   const completedCount = completed.size
-  const totalCount = roadmapNodes.length
+  const totalCount = roadmap.nodes.filter((n) => n.type === 'bubbleNode').length
 
   return (
     <div className="w-screen h-screen bg-[#020817] relative overflow-hidden">
@@ -67,20 +82,28 @@ export default function RoadmapPage() {
 
       {/* Header */}
       <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-5">
-        <div>
-          <h1
-            className="text-2xl font-black tracking-tight"
-            style={{
-              background: 'linear-gradient(135deg, #06b6d4, #a855f7)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => navigate('/')}
+            className="text-slate-400 hover:text-white transition-colors text-sm flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-white/5"
           >
-            Frontend Roadmap
-          </h1>
-          <p className="text-slate-500 text-xs mt-0.5 tracking-wide">
-            Click a bubble to explore the topic
-          </p>
+            ← Back
+          </button>
+          <div>
+            <h1
+              className="text-2xl font-black tracking-tight"
+              style={{
+                background: `linear-gradient(135deg, ${roadmap.color}, #a855f7)`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              {roadmap.label} Roadmap
+            </h1>
+            <p className="text-slate-500 text-xs mt-0.5 tracking-wide">
+              Click a bubble to explore the topic
+            </p>
+          </div>
         </div>
 
         {/* Progress pill */}
@@ -99,8 +122,8 @@ export default function RoadmapPage() {
             <div
               className="h-full rounded-full transition-all duration-700"
               style={{
-                width: `${(completedCount / totalCount) * 100}%`,
-                background: 'linear-gradient(90deg, #06b6d4, #8b5cf6)',
+                width: `${totalCount > 0 ? (completedCount / totalCount) * 100 : 0}%`,
+                background: `linear-gradient(90deg, ${roadmap.color}, #8b5cf6)`,
               }}
             />
           </div>
@@ -130,7 +153,7 @@ export default function RoadmapPage() {
         </ReactFlow>
       </div>
 
-      {/* Modal — mounted above canvas */}
+      {/* Modal */}
       <AnimatePresence>
         {selectedNode && (
           <div className="absolute inset-0 z-30" key={selectedNodeId}>

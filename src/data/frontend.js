@@ -1,4 +1,4 @@
-export const roadmapNodes = [
+export const nodes = [
   {
     id: 'html',
     type: 'bubbleNode',
@@ -154,7 +154,7 @@ Key concepts:
   },
 ]
 
-export const roadmapEdges = [
+export const edges = [
   {
     id: 'e-html-css',
     source: 'html',
