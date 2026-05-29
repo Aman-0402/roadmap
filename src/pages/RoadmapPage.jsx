@@ -9,13 +9,12 @@ import { useRoadmapStore } from '../hooks/useRoadmapStore'
 import BubbleNode from '../components/BubbleNode'
 import RoadmapEdge from '../components/RoadmapEdge'
 import TrackLabelNode from '../components/TrackLabelNode'
-import TopicModal from '../components/TopicModal'
+import RightPanel from '../components/RightPanel'
 import ParticleBackground from '../components/ParticleBackground'
 
 const NODE_TYPES = { bubbleNode: BubbleNode, trackLabel: TrackLabelNode }
 const EDGE_TYPES = { roadmapEdge: RoadmapEdge }
 
-// Shell component: guards unknown IDs before any hooks are called
 export default function RoadmapPage() {
   const { id } = useParams()
   const roadmap = roadmapsRegistry[id]
@@ -23,7 +22,6 @@ export default function RoadmapPage() {
   return <RoadmapCanvas roadmap={roadmap} />
 }
 
-// Inner component: all hooks live here, roadmap is always defined
 function RoadmapCanvas({ roadmap }) {
   const navigate = useNavigate()
   const { completed, getStatus, markComplete } = useRoadmapStore()
@@ -31,8 +29,11 @@ function RoadmapCanvas({ roadmap }) {
   const [completingNodeId, setCompletingNodeId] = useState(null)
 
   const handleNodeClick = useCallback((nodeId) => {
+    const node = roadmap.nodes.find((n) => n.id === nodeId)
+    if (!node) return
+    if (getStatus(nodeId, node.data.prerequisite) === 'locked') return
     setSelectedNodeId(nodeId)
-  }, [])
+  }, [roadmap.nodes, getStatus])
 
   const handleComplete = useCallback(async (nodeId) => {
     setSelectedNodeId(null)
@@ -106,7 +107,6 @@ function RoadmapCanvas({ roadmap }) {
           </div>
         </div>
 
-        {/* Progress pill */}
         <div
           className="flex items-center gap-3 px-4 py-2 rounded-full"
           style={{
@@ -153,18 +153,18 @@ function RoadmapCanvas({ roadmap }) {
         </ReactFlow>
       </div>
 
-      {/* Modal */}
+      {/* Right panel */}
       <AnimatePresence>
         {selectedNode && (
-          <div className="absolute inset-0 z-30" key={selectedNodeId}>
-            <TopicModal
-              nodeData={selectedNode.data}
-              nodeId={selectedNodeId}
-              status={getStatus(selectedNodeId, selectedNode.data.prerequisite)}
-              onClose={() => setSelectedNodeId(null)}
-              onComplete={handleComplete}
-            />
-          </div>
+          <RightPanel
+            key={selectedNodeId}
+            nodeData={selectedNode.data}
+            nodeId={selectedNodeId}
+            status={getStatus(selectedNodeId, selectedNode.data.prerequisite)}
+            totalCount={totalCount}
+            onClose={() => setSelectedNodeId(null)}
+            onComplete={handleComplete}
+          />
         )}
       </AnimatePresence>
     </div>
