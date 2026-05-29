@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { X, PlayCircle } from 'lucide-react'
+import { X, PlayCircle, ExternalLink } from 'lucide-react'
 
-const TABS = ['Learn', 'Videos', 'Projects', 'Practice']
+const TABS = ['Learn', 'Videos', 'Projects', 'Practice', 'Resources']
 
 const DIFFICULTY_COLORS = {
   Beginner:     { bg: 'rgba(34,197,94,0.12)',  text: '#4ade80', border: 'rgba(34,197,94,0.3)' },
@@ -158,6 +158,39 @@ export default function RightPanel({ nodeData, nodeId, status, totalCount, onClo
               <p className="text-slate-500 text-sm">Challenges coming soon.</p>
             )}
           </ul>
+        )}
+
+        {activeTab === 'Resources' && (
+          <div className="space-y-2">
+            {(topic.resources ?? []).length > 0 ? (
+              (topic.resources ?? []).map((r, i) => (
+                <a
+                  key={i}
+                  href={r.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 rounded-xl group transition-colors"
+                  style={{
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                  }}
+                >
+                  <div className="w-9 h-9 rounded-lg bg-cyan-950/60 flex items-center justify-center flex-shrink-0">
+                    <ExternalLink className="w-4 h-4 text-cyan-400" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-slate-300 group-hover:text-white transition-colors truncate">{r.title}</p>
+                    {r.description && (
+                      <p className="text-xs text-slate-500 mt-0.5 truncate">{r.description}</p>
+                    )}
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-slate-600 flex-shrink-0" />
+                </a>
+              ))
+            ) : (
+              <p className="text-slate-500 text-sm">Resources coming soon.</p>
+            )}
+          </div>
         )}
       </div>
 
