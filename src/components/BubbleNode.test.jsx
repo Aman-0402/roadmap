@@ -10,6 +10,7 @@ const baseProps = (overrides = {}) => ({
   data: {
     label: 'HTML',
     icon: '🌐',
+    step: 1,
     status: 'active',
     onClick: vi.fn(),
     completing: false,
