@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { X, PlayCircle, ExternalLink } from 'lucide-react'
 
@@ -12,41 +12,69 @@ const DIFFICULTY_COLORS = {
 
 export default function RightPanel({ nodeData, nodeId, status, totalCount, onClose, onComplete }) {
   const [activeTab, setActiveTab] = useState('Learn')
-  const { label, icon, step, difficulty, topic } = nodeData
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 640)
+
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 640)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  }, [])
+
+  const { label, icon, step, difficulty, topic, resources } = nodeData
   const isCompleted = status === 'completed'
   const diffStyle = DIFFICULTY_COLORS[difficulty] || DIFFICULTY_COLORS.Beginner
 
+  const desktopStyle = {
+    width: '420px',
+    top: 0, right: 0, bottom: 0,
+    background: 'rgba(8, 18, 35, 0.97)',
+    borderLeft: '1px solid rgba(255,255,255,0.08)',
+    backdropFilter: 'blur(20px)',
+    boxShadow: '-20px 0 60px rgba(0,0,0,0.5)',
+  }
+
+  const mobileStyle = {
+    left: 0, right: 0, bottom: 0,
+    height: '85vh',
+    borderRadius: '16px 16px 0 0',
+    background: 'rgba(8, 18, 35, 0.98)',
+    borderTop: '1px solid rgba(255,255,255,0.1)',
+    backdropFilter: 'blur(20px)',
+    boxShadow: '0 -20px 60px rgba(0,0,0,0.6)',
+  }
+
   return (
     <motion.div
-      className="fixed top-0 right-0 bottom-0 z-30 flex flex-col"
-      style={{
-        width: '420px',
-        background: 'rgba(8, 18, 35, 0.97)',
-        borderLeft: '1px solid rgba(255,255,255,0.08)',
-        backdropFilter: 'blur(20px)',
-        boxShadow: '-20px 0 60px rgba(0,0,0,0.5)',
-      }}
-      initial={{ x: 420, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 420, opacity: 0 }}
+      className="fixed z-30 flex flex-col"
+      style={isMobile ? mobileStyle : desktopStyle}
+      initial={isMobile ? { y: '100%', opacity: 0 } : { x: 420, opacity: 0 }}
+      animate={isMobile ? { y: 0, opacity: 1 } : { x: 0, opacity: 1 }}
+      exit={isMobile ? { y: '100%', opacity: 0 } : { x: 420, opacity: 0 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
+      {/* Mobile drag handle */}
+      {isMobile && (
+        <div className="flex justify-center pt-3 pb-1 flex-shrink-0">
+          <div className="w-10 h-1 rounded-full bg-slate-600" />
+        </div>
+      )}
+
       {/* Header */}
       <div
-        className="flex items-start justify-between px-6 py-5 flex-shrink-0"
+        className="flex items-start justify-between px-5 py-4 flex-shrink-0"
         style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
       >
         <div className="flex items-center gap-3">
           {icon && icon.startsWith('http') ? (
-            <img src={icon} alt={label} className="w-10 h-10 object-contain flex-shrink-0" />
+            <img src={icon} alt={label} className="w-9 h-9 object-contain flex-shrink-0" />
           ) : (
-            <span className="text-4xl">{icon}</span>
+            <span className="text-3xl">{icon}</span>
           )}
           <div>
             {step && totalCount && (
               <p className="text-xs text-slate-500 mb-0.5">Step {step} of {totalCount}</p>
             )}
-            <h2 className="text-xl font-bold text-white leading-tight">{label}</h2>
+            <h2 className="text-lg font-bold text-white leading-tight">{label}</h2>
             {difficulty && (
               <span
                 className="inline-block text-xs font-semibold px-2 py-0.5 rounded-full mt-1"
@@ -72,14 +100,14 @@ export default function RightPanel({ nodeData, nodeId, status, totalCount, onClo
 
       {/* Tabs */}
       <div
-        className="flex flex-shrink-0"
+        className="flex flex-shrink-0 overflow-x-auto"
         style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}
       >
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className="flex-1 py-3 text-xs font-semibold tracking-wide transition-colors relative"
+            className="flex-1 min-w-0 py-3 text-xs font-semibold tracking-wide transition-colors relative whitespace-nowrap px-2"
             style={{ color: activeTab === tab ? '#06b6d4' : '#64748b' }}
           >
             {tab}
@@ -95,7 +123,7 @@ export default function RightPanel({ nodeData, nodeId, status, totalCount, onClo
       </div>
 
       {/* Tab content */}
-      <div className="flex-1 overflow-y-auto px-6 py-5">
+      <div className="flex-1 overflow-y-auto px-5 py-4">
         {activeTab === 'Learn' && (
           <div className="space-y-4">
             <p className="text-slate-300 leading-relaxed text-sm">{topic.description}</p>
@@ -166,8 +194,8 @@ export default function RightPanel({ nodeData, nodeId, status, totalCount, onClo
 
         {activeTab === 'Resources' && (
           <div className="space-y-2">
-            {(topic.resources ?? []).length > 0 ? (
-              (topic.resources ?? []).map((r, i) => (
+            {(resources ?? []).length > 0 ? (
+              (resources ?? []).map((r, i) => (
                 <a
                   key={i}
                   href={r.url}
@@ -200,7 +228,7 @@ export default function RightPanel({ nodeData, nodeId, status, totalCount, onClo
 
       {/* CTA footer */}
       <div
-        className="px-6 py-4 flex-shrink-0"
+        className="px-5 py-4 flex-shrink-0"
         style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
       >
         <motion.button

@@ -81,17 +81,17 @@ function RoadmapCanvas({ roadmap }) {
       <ParticleBackground />
 
       {/* Header */}
-      <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-5">
-        <div className="flex items-center gap-4">
+      <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-4 sm:px-8 py-3 sm:py-5">
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0">
           <button
             onClick={() => navigate('/')}
-            className="text-slate-400 hover:text-white transition-colors text-sm flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-white/5"
+            className="text-slate-400 hover:text-white transition-colors text-sm flex items-center gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg hover:bg-white/5 flex-shrink-0"
           >
             ← Back
           </button>
-          <div>
+          <div className="min-w-0">
             <h1
-              className="text-2xl font-black tracking-tight"
+              className="text-lg sm:text-2xl font-black tracking-tight truncate"
               style={{
                 background: `linear-gradient(135deg, ${roadmap.color}, #a855f7)`,
                 WebkitBackgroundClip: 'text',
@@ -100,14 +100,15 @@ function RoadmapCanvas({ roadmap }) {
             >
               {roadmap.label} Roadmap
             </h1>
-            <p className="text-slate-500 text-xs mt-0.5 tracking-wide">
+            <p className="text-slate-500 text-xs mt-0.5 tracking-wide hidden sm:block">
               Click a bubble to explore the topic
             </p>
           </div>
         </div>
 
+        {/* Progress pill — hidden on mobile */}
         <div
-          className="flex items-center gap-3 px-4 py-2 rounded-full"
+          className="hidden sm:flex items-center gap-3 px-4 py-2 rounded-full flex-shrink-0"
           style={{
             background: 'rgba(255,255,255,0.04)',
             border: '1px solid rgba(255,255,255,0.08)',
@@ -123,6 +124,20 @@ function RoadmapCanvas({ roadmap }) {
               style={{
                 width: `${totalCount > 0 ? (completedCount / totalCount) * 100 : 0}%`,
                 background: `linear-gradient(90deg, ${roadmap.color}, #8b5cf6)`,
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Mobile progress — compact */}
+        <div className="flex sm:hidden items-center gap-1.5 flex-shrink-0">
+          <span className="text-white font-bold text-xs">{completedCount}/{totalCount}</span>
+          <div className="w-12 h-1 rounded-full bg-slate-800 overflow-hidden">
+            <div
+              className="h-full rounded-full transition-all duration-700"
+              style={{
+                width: `${totalCount > 0 ? (completedCount / totalCount) * 100 : 0}%`,
+                background: roadmap.color,
               }}
             />
           </div>
