@@ -20,7 +20,7 @@ export const nodes = [
     position: { x: 80, y: 80 },
     data: {
       label: 'HTML',
-      icon: 'https://techicons.dev/icons/html5.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/HTML5.svg',
       step: 1,
       difficulty: 'Beginner',
       resources: [
@@ -50,7 +50,7 @@ export const nodes = [
     position: { x: 80, y: 320 },
     data: {
       label: 'CSS',
-      icon: 'https://techicons.dev/icons/css3.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/CSS3.svg',
       step: 2,
       difficulty: 'Beginner',
       resources: [
@@ -80,7 +80,7 @@ export const nodes = [
     position: { x: 80, y: 560 },
     data: {
       label: 'JavaScript',
-      icon: 'https://techicons.dev/icons/javascript.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/JavaScript.svg',
       step: 3,
       difficulty: 'Intermediate',
       resources: [
@@ -110,7 +110,7 @@ export const nodes = [
     position: { x: 80, y: 800 },
     data: {
       label: 'React',
-      icon: 'https://techicons.dev/icons/react.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/React.svg',
       step: 4,
       difficulty: 'Intermediate',
       resources: [
@@ -142,7 +142,7 @@ export const nodes = [
     position: { x: 400, y: 80 },
     data: {
       label: 'Node.js',
-      icon: 'https://techicons.dev/icons/nodejs.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/Node.js.svg',
       step: 1,
       difficulty: 'Beginner',
       resources: [
@@ -171,7 +171,7 @@ export const nodes = [
     position: { x: 400, y: 320 },
     data: {
       label: 'Express',
-      icon: 'https://techicons.dev/icons/express.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/Express.svg',
       step: 2,
       difficulty: 'Intermediate',
       resources: [
@@ -200,7 +200,7 @@ export const nodes = [
     position: { x: 400, y: 560 },
     data: {
       label: 'MongoDB',
-      icon: 'https://techicons.dev/icons/mongodb.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/MongoDB.svg',
       step: 3,
       difficulty: 'Intermediate',
       resources: [

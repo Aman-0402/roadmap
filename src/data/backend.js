@@ -20,7 +20,7 @@ export const nodes = [
     position: { x: 150, y: 100 },
     data: {
       label: 'Node.js',
-      icon: 'https://techicons.dev/icons/nodejs.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/Node.js.svg',
       step: 1,
       difficulty: 'Beginner',
       resources: [
@@ -60,7 +60,7 @@ export const nodes = [
     position: { x: 150, y: 300 },
     data: {
       label: 'Express',
-      icon: 'https://techicons.dev/icons/express.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/Express.svg',
       step: 2,
       difficulty: 'Intermediate',
       resources: [
@@ -99,7 +99,7 @@ export const nodes = [
     position: { x: 150, y: 500 },
     data: {
       label: 'MongoDB',
-      icon: 'https://techicons.dev/icons/mongodb.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/MongoDB.svg',
       step: 3,
       difficulty: 'Intermediate',
       resources: [
@@ -183,7 +183,7 @@ export const nodes = [
     position: { x: 520, y: 100 },
     data: {
       label: 'Python',
-      icon: 'https://techicons.dev/icons/python.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/Python.svg',
       step: 1,
       difficulty: 'Beginner',
       resources: [
@@ -224,7 +224,7 @@ export const nodes = [
     position: { x: 520, y: 300 },
     data: {
       label: 'Django',
-      icon: 'https://techicons.dev/icons/django.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/Django.svg',
       step: 2,
       difficulty: 'Intermediate',
       resources: [
@@ -265,7 +265,7 @@ export const nodes = [
     position: { x: 520, y: 500 },
     data: {
       label: 'PostgreSQL',
-      icon: 'https://techicons.dev/icons/postgresql.svg',
+      icon: 'https://icon.icepanel.io/Technology/svg/PostgresSQL.svg',
       step: 3,
       difficulty: 'Intermediate',
       resources: [
