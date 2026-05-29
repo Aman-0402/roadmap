@@ -3,13 +3,13 @@ export const nodes = [
   {
     id: 'label-nodejs-track',
     type: 'trackLabel',
-    position: { x: 150, y: -60 },
+    position: { x: 60, y: -70 },
     data: { label: 'Node.js Path' },
   },
   {
     id: 'label-python-track',
     type: 'trackLabel',
-    position: { x: 520, y: -60 },
+    position: { x: 540, y: -70 },
     data: { label: 'Python Path' },
   },
 
@@ -17,7 +17,7 @@ export const nodes = [
   {
     id: 'nodejs',
     type: 'bubbleNode',
-    position: { x: 150, y: 100 },
+    position: { x: 60, y: 60 },
     data: {
       label: 'Node.js',
       icon: 'https://icon.icepanel.io/Technology/svg/Node.js.svg',
@@ -57,7 +57,7 @@ export const nodes = [
   {
     id: 'express',
     type: 'bubbleNode',
-    position: { x: 150, y: 300 },
+    position: { x: 100, y: 300 },
     data: {
       label: 'Express',
       icon: 'https://icon.icepanel.io/Technology/svg/Express.svg',
@@ -96,7 +96,7 @@ export const nodes = [
   {
     id: 'mongodb',
     type: 'bubbleNode',
-    position: { x: 150, y: 500 },
+    position: { x: 140, y: 540 },
     data: {
       label: 'MongoDB',
       icon: 'https://icon.icepanel.io/Technology/svg/MongoDB.svg',
@@ -137,7 +137,7 @@ export const nodes = [
   {
     id: 'restapi',
     type: 'bubbleNode',
-    position: { x: 150, y: 700 },
+    position: { x: 160, y: 780 },
     data: {
       label: 'REST API',
       icon: '🔌',
@@ -180,7 +180,7 @@ export const nodes = [
   {
     id: 'python',
     type: 'bubbleNode',
-    position: { x: 520, y: 100 },
+    position: { x: 540, y: 60 },
     data: {
       label: 'Python',
       icon: 'https://icon.icepanel.io/Technology/svg/Python.svg',
@@ -221,7 +221,7 @@ export const nodes = [
   {
     id: 'django',
     type: 'bubbleNode',
-    position: { x: 520, y: 300 },
+    position: { x: 500, y: 300 },
     data: {
       label: 'Django',
       icon: 'https://icon.icepanel.io/Technology/svg/Django.svg',
@@ -262,7 +262,7 @@ export const nodes = [
   {
     id: 'postgresql',
     type: 'bubbleNode',
-    position: { x: 520, y: 500 },
+    position: { x: 460, y: 540 },
     data: {
       label: 'PostgreSQL',
       icon: 'https://icon.icepanel.io/Technology/svg/PostgresSQL.svg',
@@ -304,7 +304,7 @@ export const nodes = [
   {
     id: 'restapis',
     type: 'bubbleNode',
-    position: { x: 520, y: 700 },
+    position: { x: 440, y: 780 },
     data: {
       label: 'REST APIs',
       icon: '🔗',

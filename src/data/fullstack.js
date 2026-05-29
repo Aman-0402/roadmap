@@ -3,13 +3,13 @@ export const nodes = [
   {
     id: 'label-fs-frontend',
     type: 'trackLabel',
-    position: { x: 80, y: -60 },
+    position: { x: 60, y: -70 },
     data: { label: 'Frontend Path' },
   },
   {
     id: 'label-fs-backend',
     type: 'trackLabel',
-    position: { x: 400, y: -60 },
+    position: { x: 540, y: -70 },
     data: { label: 'Backend Path' },
   },
 
@@ -17,7 +17,7 @@ export const nodes = [
   {
     id: 'fs-html',
     type: 'bubbleNode',
-    position: { x: 80, y: 80 },
+    position: { x: 60, y: 60 },
     data: {
       label: 'HTML',
       icon: 'https://icon.icepanel.io/Technology/svg/HTML5.svg',
@@ -47,7 +47,7 @@ export const nodes = [
   {
     id: 'fs-css',
     type: 'bubbleNode',
-    position: { x: 80, y: 320 },
+    position: { x: 100, y: 300 },
     data: {
       label: 'CSS',
       icon: 'https://icon.icepanel.io/Technology/svg/CSS3.svg',
@@ -77,7 +77,7 @@ export const nodes = [
   {
     id: 'fs-js',
     type: 'bubbleNode',
-    position: { x: 80, y: 560 },
+    position: { x: 140, y: 540 },
     data: {
       label: 'JavaScript',
       icon: 'https://icon.icepanel.io/Technology/svg/JavaScript.svg',
@@ -107,7 +107,7 @@ export const nodes = [
   {
     id: 'fs-react',
     type: 'bubbleNode',
-    position: { x: 80, y: 800 },
+    position: { x: 160, y: 780 },
     data: {
       label: 'React',
       icon: 'https://icon.icepanel.io/Technology/svg/React.svg',
@@ -139,7 +139,7 @@ export const nodes = [
   {
     id: 'fs-nodejs',
     type: 'bubbleNode',
-    position: { x: 400, y: 80 },
+    position: { x: 540, y: 60 },
     data: {
       label: 'Node.js',
       icon: 'https://icon.icepanel.io/Technology/svg/Node.js.svg',
@@ -168,7 +168,7 @@ export const nodes = [
   {
     id: 'fs-express',
     type: 'bubbleNode',
-    position: { x: 400, y: 320 },
+    position: { x: 500, y: 300 },
     data: {
       label: 'Express',
       icon: 'https://icon.icepanel.io/Technology/svg/Express.svg',
@@ -197,7 +197,7 @@ export const nodes = [
   {
     id: 'fs-mongodb',
     type: 'bubbleNode',
-    position: { x: 400, y: 560 },
+    position: { x: 460, y: 540 },
     data: {
       label: 'MongoDB',
       icon: 'https://icon.icepanel.io/Technology/svg/MongoDB.svg',
@@ -227,7 +227,7 @@ export const nodes = [
   {
     id: 'fs-deploy',
     type: 'bubbleNode',
-    position: { x: 400, y: 800 },
+    position: { x: 440, y: 780 },
     data: {
       label: 'Deployment',
       icon: '🚀',
