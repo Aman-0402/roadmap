@@ -43,7 +43,7 @@ src/
   components/
     BubbleNode.jsx           # React Flow custom node — 160px circle, hover tooltip, step badge
     RoadmapEdge.jsx          # React Flow custom edge — dotted, marching-ants on active
-    RightPanel.jsx           # Slide-in panel (420px), 4 tabs, replaces old TopicModal
+    RightPanel.jsx           # Slide-in panel (420px), 5 tabs, replaces old TopicModal
     TrackLabelNode.jsx       # Non-interactive pill label for parallel tracks
     ParticleBackground.jsx   # tsParticles background
   data/
@@ -93,6 +93,7 @@ Shell (`RoadmapPage`) does ONE thing: guard unknown `id` via `Navigate`. All hoo
     icon: string,         // emoji
     step: number,         // 1-based, per-track (parallel tracks each restart at 1)
     difficulty: 'Beginner' | 'Intermediate' | 'Advanced',
+    resources: [{ title: string, url: string, description?: string }],  // Resources tab links
     prerequisite: string | null,  // id of required node, or null
     topic: {
       description: string,
@@ -112,9 +113,10 @@ Shell (`RoadmapPage`) does ONE thing: guard unknown `id` via `Navigate`. All hoo
 `nodes` useMemo spreads `node.data` then adds runtime props:
 ```js
 status: getStatus(node.id, node.data.prerequisite),  // 'locked' | 'active' | 'completed'
-onClick: handleNodeClick,
 completing: completingNodeId === node.id,
 ```
+
+Node clicks are handled via `onNodeClick` prop on `<ReactFlow>` — NOT via `onClick` in node data. This is required because `elementsSelectable={false}` + `nodesDraggable={false}` blocks pointer events on node wrappers in @xyflow/react v12, preventing inner element onClick handlers from firing. `onNodeClick` fires at the flow level and bypasses this.
 
 `handleNodeClick` guards locked nodes — clicking a locked bubble is a no-op.
 
@@ -122,10 +124,16 @@ completing: completingNodeId === node.id,
 
 Props: `nodeData, nodeId, status, totalCount, onClose, onComplete`
 
-- Reads `nodeData.topic.*` for tab content.
+Tabs: **Learn** / **Videos** / **Projects** / **Practice** / **Resources**
+
+- Learn: `topic.description` + `topic.notes`
+- Videos: `topic.videos` — PlayCircle icon, opens in new tab
+- Projects: `topic.projects` — numbered list
+- Practice: `topic.practice` — arrow list, falls back to "Challenges coming soon."
+- Resources: `nodeData.resources` — ExternalLink icon, title + description, opens in new tab; falls back to "Resources coming soon."
+- All array reads are guarded with `?? []`.
 - `motion.button` with `disabled={isCompleted}` — renders a real `<button>`.
 - Button text exactly: `'Mark as Completed'` (active) / `'✓ Already Completed'` (completed).
-- `(topic.videos ?? []).map(...)` and `(topic.projects ?? []).map(...)` — guarded.
 
 ### BubbleNode hover tooltip
 
