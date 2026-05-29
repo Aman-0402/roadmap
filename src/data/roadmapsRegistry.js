@@ -1,6 +1,7 @@
 import { nodes as frontendNodes, edges as frontendEdges } from './frontend'
 import { nodes as backendNodes, edges as backendEdges } from './backend'
 import { nodes as fullstackNodes, edges as fullstackEdges } from './fullstack'
+import { nodes as pythonNodes, edges as pythonEdges } from './python'
 
 export const roadmapsRegistry = {
   frontend: {
@@ -27,6 +28,14 @@ export const roadmapsRegistry = {
     nodes: fullstackNodes,
     edges: fullstackEdges,
   },
+  python: {
+    label: 'Python',
+    icon: 'https://icon.icepanel.io/Technology/svg/Python.svg',
+    color: '#f59e0b',
+    description: 'Data Science + Web Development',
+    nodes: pythonNodes,
+    edges: pythonEdges,
+  },
 }
 
-export const roadmapsList = ['frontend', 'backend', 'fullstack']
+export const roadmapsList = ['frontend', 'backend', 'fullstack', 'python']

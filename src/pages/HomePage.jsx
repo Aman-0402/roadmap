@@ -75,7 +75,11 @@ function RoadmapCard({ roadmap, bubbleCount, index, onClick }) {
         transition: 'box-shadow 0.3s ease',
       }}
     >
-      <span className="text-6xl">{roadmap.icon}</span>
+      {roadmap.icon && roadmap.icon.startsWith('http') ? (
+        <img src={roadmap.icon} alt={roadmap.label} className="w-16 h-16 object-contain" />
+      ) : (
+        <span className="text-6xl">{roadmap.icon}</span>
+      )}
 
       <div className="text-center">
         <h2 className="text-xl font-bold text-white mb-1">{roadmap.label}</h2>

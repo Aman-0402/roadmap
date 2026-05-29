@@ -2,12 +2,12 @@ import { describe, it, expect } from 'vitest'
 import { roadmapsRegistry, roadmapsList } from './roadmapsRegistry'
 
 describe('roadmapsRegistry', () => {
-  it('has exactly 3 roadmaps', () => {
-    expect(Object.keys(roadmapsRegistry)).toHaveLength(3)
+  it('has exactly 4 roadmaps', () => {
+    expect(Object.keys(roadmapsRegistry)).toHaveLength(4)
   })
 
-  it('roadmapsList is ["frontend", "backend", "fullstack"] in order', () => {
-    expect(roadmapsList).toEqual(['frontend', 'backend', 'fullstack'])
+  it('roadmapsList is ["frontend", "backend", "fullstack", "python"] in order', () => {
+    expect(roadmapsList).toEqual(['frontend', 'backend', 'fullstack', 'python'])
   })
 
   it('each roadmap has required metadata fields', () => {
