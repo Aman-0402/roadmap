@@ -136,16 +136,23 @@ function RoadmapCanvas({ roadmap }) {
           edges={edges}
           nodeTypes={NODE_TYPES}
           edgeTypes={EDGE_TYPES}
-          fitView
-          fitViewOptions={{ padding: 0.3 }}
+          onInit={(flow) => {
+            requestAnimationFrame(() => {
+              const firstNodes = roadmap.nodes
+                .filter((n) => n.type === 'bubbleNode' && n.data.step === 1)
+                .map((n) => ({ id: n.id }))
+              flow.fitView({ nodes: firstNodes, padding: 0.35, maxZoom: 1.5, duration: 0 })
+            })
+          }}
           onNodeClick={(_, node) => handleNodeClick(node.id)}
           nodesDraggable={false}
           nodesConnectable={false}
           elementsSelectable={false}
           panOnDrag
-          zoomOnScroll
-          minZoom={0.4}
-          maxZoom={1.5}
+          panOnScroll
+          zoomOnScroll={false}
+          minZoom={0.3}
+          maxZoom={2}
           proOptions={{ hideAttribution: true }}
           style={{ background: 'transparent' }}
         >
