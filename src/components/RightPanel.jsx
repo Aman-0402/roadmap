@@ -111,7 +111,7 @@ export default function RightPanel({ nodeData, nodeId, status, totalCount, onClo
 
         {activeTab === 'Videos' && (
           <div className="space-y-2">
-            {topic.videos.map((v, i) => (
+            {(topic.videos ?? []).map((v, i) => (
               <a
                 key={i}
                 href={v.url}
@@ -136,7 +136,7 @@ export default function RightPanel({ nodeData, nodeId, status, totalCount, onClo
 
         {activeTab === 'Projects' && (
           <ul className="space-y-2">
-            {topic.projects.map((p, i) => (
+            {(topic.projects ?? []).map((p, i) => (
               <li key={i} className="flex gap-3 text-sm text-slate-300">
                 <span className="text-purple-400 font-bold flex-shrink-0 mt-0.5">{i + 1}.</span>
                 {p}
