@@ -8,6 +8,11 @@ export const nodes = [
       icon: '🌐',
       step: 1,
       difficulty: 'Beginner',
+      resources: [
+        { title: 'MDN HTML Reference', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML', description: 'Complete element reference' },
+        { title: 'HTML.com', url: 'https://html.com/', description: 'Beginner-friendly guide' },
+        { title: 'W3Schools HTML', url: 'https://www.w3schools.com/html/', description: 'Interactive tutorials & reference' },
+      ],
       prerequisite: null,
       topic: {
         description: 'The backbone of every webpage. HTML defines the structure and content of web pages using a system of elements and tags.',
@@ -47,6 +52,12 @@ Key concepts:
       icon: '🎨',
       step: 2,
       difficulty: 'Beginner',
+      resources: [
+        { title: 'MDN CSS Reference', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS', description: 'Complete property reference' },
+        { title: 'CSS-Tricks', url: 'https://css-tricks.com/', description: 'Guides, snippets & almanac' },
+        { title: 'Flexbox Froggy', url: 'https://flexboxfroggy.com/', description: 'Learn Flexbox interactively' },
+        { title: 'CSS Grid Garden', url: 'https://cssgridgarden.com/', description: 'Learn CSS Grid interactively' },
+      ],
       prerequisite: 'html',
       topic: {
         description: 'CSS brings HTML to life. Style, layout, animations — CSS controls how your web pages look and feel across all devices.',
@@ -87,6 +98,11 @@ Key concepts:
       icon: '⚡',
       step: 3,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'javascript.info', url: 'https://javascript.info/', description: 'Modern JS tutorial — beginner to advanced' },
+        { title: 'MDN JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', description: 'Complete language reference' },
+        { title: 'Eloquent JavaScript', url: 'https://eloquentjavascript.net/', description: 'Free in-depth book' },
+      ],
       prerequisite: 'css',
       topic: {
         description: 'JavaScript makes web pages interactive and dynamic. The programming language of the web — runs in every browser, and on servers with Node.js.',
@@ -128,6 +144,11 @@ Key concepts:
       icon: '⚛️',
       step: 4,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'React Official Docs', url: 'https://react.dev/', description: 'Tutorials, references & API docs' },
+        { title: 'React Patterns', url: 'https://reactpatterns.com/', description: 'Common component patterns' },
+        { title: 'Beta React Docs', url: 'https://react.dev/learn', description: 'Interactive learning path' },
+      ],
       prerequisite: 'javascript',
       topic: {
         description: 'React is a JavaScript library for building user interfaces from reusable components. The industry standard for modern web apps.',

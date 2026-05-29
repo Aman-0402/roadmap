@@ -23,6 +23,11 @@ export const nodes = [
       icon: '🟢',
       step: 1,
       difficulty: 'Beginner',
+      resources: [
+        { title: 'Node.js Official Docs', url: 'https://nodejs.org/en/docs', description: 'API reference & guides' },
+        { title: 'NodeSchool', url: 'https://nodeschool.io/', description: 'Interactive workshops' },
+        { title: 'Node.js Best Practices', url: 'https://github.com/goldbergyoni/nodebestpractices', description: 'Production best practices list' },
+      ],
       prerequisite: null,
       topic: {
         description: 'Node.js is a JavaScript runtime built on Chrome\'s V8 engine, allowing you to run JavaScript on the server side.',
@@ -58,6 +63,10 @@ export const nodes = [
       icon: '🚂',
       step: 2,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'Express.js Official Docs', url: 'https://expressjs.com/', description: 'API reference & guide' },
+        { title: 'Express Tutorial — MDN', url: 'https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs', description: 'Step-by-step server-side guide' },
+      ],
       prerequisite: 'nodejs',
       topic: {
         description: 'Express is a minimal and flexible Node.js web application framework providing a robust set of features for web and mobile applications.',
@@ -93,6 +102,11 @@ export const nodes = [
       icon: '🍃',
       step: 3,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'MongoDB Official Docs', url: 'https://www.mongodb.com/docs/', description: 'Full reference & tutorials' },
+        { title: 'Mongoose Docs', url: 'https://mongoosejs.com/docs/', description: 'ODM schema & query reference' },
+        { title: 'MongoDB University', url: 'https://learn.mongodb.com/', description: 'Free official courses' },
+      ],
       prerequisite: 'express',
       topic: {
         description: 'MongoDB is a document-oriented NoSQL database. Data is stored as flexible JSON-like documents — perfect for JavaScript applications.',
@@ -129,6 +143,11 @@ export const nodes = [
       icon: '🔌',
       step: 4,
       difficulty: 'Advanced',
+      resources: [
+        { title: 'REST API Tutorial', url: 'https://restfulapi.net/', description: 'REST constraints & best practices' },
+        { title: 'HTTP Status Codes', url: 'https://httpstatuses.io/', description: 'Quick status code reference' },
+        { title: 'Postman Learning Center', url: 'https://learning.postman.com/', description: 'API testing & documentation' },
+      ],
       prerequisite: 'mongodb',
       topic: {
         description: 'REST APIs are the standard for web services. Learn to design, secure, document, and deploy production-ready APIs.',
@@ -167,6 +186,11 @@ export const nodes = [
       icon: '🐍',
       step: 1,
       difficulty: 'Beginner',
+      resources: [
+        { title: 'Python Official Docs', url: 'https://docs.python.org/3/', description: 'Language reference & stdlib' },
+        { title: 'Real Python', url: 'https://realpython.com/', description: 'Practical tutorials & articles' },
+        { title: 'Python Tutor', url: 'https://pythontutor.com/', description: 'Visualize code execution' },
+      ],
       prerequisite: null,
       topic: {
         description: 'Python is a versatile, beginner-friendly language known for clean syntax. Widely used in web development, data science, and automation.',
@@ -203,6 +227,11 @@ export const nodes = [
       icon: '🎸',
       step: 2,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'Django Official Docs', url: 'https://docs.djangoproject.com/', description: 'Full framework reference' },
+        { title: 'Django Girls Tutorial', url: 'https://tutorial.djangogirls.org/', description: 'Beginner project walkthrough' },
+        { title: 'Django REST Framework', url: 'https://www.django-rest-framework.org/', description: 'DRF API reference' },
+      ],
       prerequisite: 'python',
       topic: {
         description: 'Django is a high-level Python web framework for rapid development of secure and maintainable websites. "Batteries included."',
@@ -239,6 +268,11 @@ export const nodes = [
       icon: '🐘',
       step: 3,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'PostgreSQL Official Docs', url: 'https://www.postgresql.org/docs/', description: 'Complete SQL reference' },
+        { title: 'pgExercises', url: 'https://pgexercises.com/', description: 'Interactive SQL practice' },
+        { title: 'Use The Index, Luke', url: 'https://use-the-index-luke.com/', description: 'SQL indexing & performance' },
+      ],
       prerequisite: 'django',
       topic: {
         description: 'PostgreSQL is a powerful open-source relational database with a strong reputation for reliability, data integrity, and correctness.',
@@ -276,6 +310,11 @@ export const nodes = [
       icon: '🔗',
       step: 4,
       difficulty: 'Advanced',
+      resources: [
+        { title: 'Django REST Framework Docs', url: 'https://www.django-rest-framework.org/', description: 'Full DRF reference' },
+        { title: 'DRF Tutorial', url: 'https://www.django-rest-framework.org/tutorial/quickstart/', description: 'Quickstart to first API' },
+        { title: 'Simple JWT Docs', url: 'https://django-rest-framework-simplejwt.readthedocs.io/', description: 'JWT auth for DRF' },
+      ],
       prerequisite: 'postgresql',
       topic: {
         description: 'Build production-ready REST APIs using Django REST Framework — the most powerful toolkit for building Web APIs in Python.',

@@ -23,6 +23,10 @@ export const nodes = [
       icon: '🌐',
       step: 1,
       difficulty: 'Beginner',
+      resources: [
+        { title: 'MDN HTML Reference', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML', description: 'Complete element reference' },
+        { title: 'W3Schools HTML', url: 'https://www.w3schools.com/html/', description: 'Interactive tutorials & reference' },
+      ],
       prerequisite: null,
       topic: {
         description: 'The backbone of every webpage. HTML defines structure and content using elements and tags.',
@@ -49,6 +53,11 @@ export const nodes = [
       icon: '🎨',
       step: 2,
       difficulty: 'Beginner',
+      resources: [
+        { title: 'MDN CSS Reference', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS', description: 'Complete property reference' },
+        { title: 'CSS-Tricks', url: 'https://css-tricks.com/', description: 'Guides, snippets & almanac' },
+        { title: 'Flexbox Froggy', url: 'https://flexboxfroggy.com/', description: 'Learn Flexbox interactively' },
+      ],
       prerequisite: 'fs-html',
       topic: {
         description: 'CSS styles and layouts your HTML. Controls colors, spacing, typography, and responsiveness.',
@@ -74,6 +83,10 @@ export const nodes = [
       icon: '⚡',
       step: 3,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'javascript.info', url: 'https://javascript.info/', description: 'Modern JS tutorial — beginner to advanced' },
+        { title: 'MDN JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript', description: 'Complete language reference' },
+      ],
       prerequisite: 'fs-css',
       topic: {
         description: 'JavaScript makes pages interactive. Arrays, objects, DOM, events, async/await, and the Fetch API.',
@@ -100,6 +113,10 @@ export const nodes = [
       icon: '⚛️',
       step: 4,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'React Official Docs', url: 'https://react.dev/', description: 'Tutorials, references & API docs' },
+        { title: 'React Patterns', url: 'https://reactpatterns.com/', description: 'Common component patterns' },
+      ],
       prerequisite: 'fs-js',
       topic: {
         description: 'React builds UIs from reusable components. useState, useEffect, custom hooks, and React Router.',
@@ -128,6 +145,10 @@ export const nodes = [
       icon: '🟢',
       step: 1,
       difficulty: 'Beginner',
+      resources: [
+        { title: 'Node.js Official Docs', url: 'https://nodejs.org/en/docs', description: 'API reference & guides' },
+        { title: 'NodeSchool', url: 'https://nodeschool.io/', description: 'Interactive workshops' },
+      ],
       prerequisite: null,
       topic: {
         description: 'Node.js runs JavaScript on the server. Event loop, npm, file system, and HTTP module.',
@@ -153,6 +174,10 @@ export const nodes = [
       icon: '🚂',
       step: 2,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'Express.js Official Docs', url: 'https://expressjs.com/', description: 'API reference & guide' },
+        { title: 'Express Tutorial — MDN', url: 'https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs', description: 'Step-by-step server-side guide' },
+      ],
       prerequisite: 'fs-nodejs',
       topic: {
         description: 'Express is the minimal Node.js web framework. Routes, middleware, request/response handling.',
@@ -178,6 +203,10 @@ export const nodes = [
       icon: '🍃',
       step: 3,
       difficulty: 'Intermediate',
+      resources: [
+        { title: 'MongoDB Official Docs', url: 'https://www.mongodb.com/docs/', description: 'Full reference & tutorials' },
+        { title: 'Mongoose Docs', url: 'https://mongoosejs.com/docs/', description: 'ODM schema & query reference' },
+      ],
       prerequisite: 'fs-express',
       topic: {
         description: 'MongoDB stores data as flexible JSON documents. Connect your Express API to a real database with Mongoose.',
@@ -204,6 +233,11 @@ export const nodes = [
       icon: '🚀',
       step: 4,
       difficulty: 'Advanced',
+      resources: [
+        { title: 'Vercel Docs', url: 'https://vercel.com/docs', description: 'Deploy frontend in seconds' },
+        { title: 'Railway Docs', url: 'https://docs.railway.com/', description: 'Deploy backend & databases' },
+        { title: 'MongoDB Atlas', url: 'https://www.mongodb.com/atlas', description: 'Managed cloud database' },
+      ],
       prerequisite: 'fs-mongodb',
       topic: {
         description: 'Deploy your full stack app to the cloud. Host frontend on Vercel, backend on Railway or Render, database on MongoDB Atlas.',
