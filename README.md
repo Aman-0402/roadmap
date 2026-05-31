@@ -89,3 +89,4 @@ src/
 6. Click **Mark as Completed** → burst animation plays, node turns green, next unlocks
 7. **Locked** nodes (prerequisites not met) are dimmed — click does nothing
 8. Progress bar in the header tracks completion
+Hellooooooooo
